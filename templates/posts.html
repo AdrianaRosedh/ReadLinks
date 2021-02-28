@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Posts</title> 
+{% endblock %}
+
+{% block body %}
+<br>
+<div>
+    <h1 style="display:inline">All Posts</h1>
+    <a style="display:inline" class="btn btn-success float-right" href="/posts/new" >+ New Post</a>
+</div>
+    <hr>
+
+    {% for post in posts %}
+        <a href="{{ post.url }}" target="_blank" >{{ post.title }}
+          <img src="/static/img/link.png" alt="image for links" width="15" height="15">
+        </a>
+        <a class="btn btn-danger btn-sm float-right" style="display:inline"  href='/posts/delete/{{post.id}}'>Already Read</a>
+        <br>
+        <br>
+        <a class="btn btn-primary btn-sm" href='/posts/edit/{{post.id}}'>Edit</a>
+        <hr>
+        <br>
+    {% endfor%}
+
+{% endblock %}
